@@ -1,0 +1,1 @@
+This is the QuickHitch application created with NodeJS, AngularJS, and MongoDB.
