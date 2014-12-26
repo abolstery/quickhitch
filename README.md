@@ -3,7 +3,7 @@ This application is created with NodeJS, AngularJS, and MongoDB.
 
 --------
 
-To run this application run "npm start" in the commandn line.
+To run this application run "npm start" in the command line.
 
 To create a new route, do the following:
 1. Add "app.use(...)" to app.js, where the other ones are.
