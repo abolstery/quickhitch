@@ -18,7 +18,7 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 
-//mongoose.connect('mongodb://localhost/test'); 
+mongoose.connect('mongodb://localhost'); 
 
 //Configuration:
 //using express modules to add more functionality to our application.
