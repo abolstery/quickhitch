@@ -2,5 +2,8 @@ extends layout
 
 block content
 	div(ng-controller="mainCtrl")
-		h1 #{title}
-		p Welcome to {{title}}
+		div(id='description' class="center")
+			h1 Need a taxi to get to your conference?
+			h2 Share with someone who's going in the same direction!
+			a(href="/conferences", class="button buttonWord") Conferences
+			a(href="/users", class="button buttonWord") Users

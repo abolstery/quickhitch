@@ -1,7 +1,83 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("/images/cabs.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 a {
   color: #00b7ff;
+}
+
+#logo {
+  color:white;
+  margin-top: 50px;
+  font-family: 'Lobster';
+  font-size: 80px;
+  cursor: pointer;
+  margin-left:35%;
+  &:hover {
+    text-decoration:none;
+    background-color: transparent;
+  }
+}
+
+.center {
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#mainDiv {
+  font-family: 'Helvetica Neue';
+  font-size: 25px;
+  color:white;
+  padding: 20px 50px 20px 50px;
+  background: rgba(30, 30, 30, .8);
+  margin: 4% 5% 0% 5%;
+}
+
+button, input[type='submit'], .button {
+	padding: 15px;
+	color: white;
+	font-size: 20px;
+	font-family: 'Helvetica Neue';
+	border: 0;
+	background-color: #347CE0;
+	cursor: pointer;
+	margin: 20px 10px 0px 10px;
+	&:hover {
+	  text-decoration: none;
+	  background-color: #347CE0;
+	  color: white;
+	}
+}
+
+.buttonWord {
+	text-decoration: none; 
+	color:white;
+}
+
+/* table adapted from: http://www.kirupa.com/html5/style_beautiful_tables_using_only_css.htm*/
+#confTable td, #confTable th {
+  border: white 1px solid;
+  border-collapse: collapse;
+  padding: 10px;
+  width: 450px;
+}
+#confTable th {
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgba(255,245,102,.5);
+}
+#confTable tr:nth-of-type(2n + 2) {
+    background-color: rgba(255,255,204,.5);
+}
+#confTable tr:nth-of-type(2n + 1) {
+    background-color: rgba(255,255,204,.1);
+}
+#confTable {
+  margin-bottom: 20px;
 }

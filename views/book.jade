@@ -1,0 +1,32 @@
+extends layout
+
+block content
+	div(ng-controller="rideController", class="container")
+		table
+			tr
+				td Name
+				td
+					input(placeholder="Nancy Drew", ng-model="ride.name")
+			tr
+				td Conference Code
+				td
+					input(placeholder="GHC", ng-model="ride.code")
+			tr
+				td Date
+				td
+					input(id="datepicker", type="text", ng-model="ride.date")
+			tr
+				td Flight Number
+				td
+					input(placeholder="UA432", ng-model="ride.flightNum")
+			tr
+				td Arrival Time
+				td
+					input(placeholder="10:00", ng-model="ride.flightNum", style="width:40%")
+					select(ng-model="ampm")
+						option AM
+						option PM
+		br/
+		a(ng-click="findRide()", href="/listing", class="button buttonWord") Submit
+
+- $( "#datepicker" ).datepicker();

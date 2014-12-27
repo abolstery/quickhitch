@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	div(class="center", ng-controller="confController")
+		h2 Conferences
+		table(id="confTable")
+			thead
+				tr 
+					th Name
+					th Code
+					th Attending?
+			tbody
+				tr(ng-repeat="conference in conferences")
+					td {{conference.name}}
+					td {{conference.code}}
+					td
+						a(href="/book", ng-click="setRide(conference.code)") Find ride!

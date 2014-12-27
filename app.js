@@ -8,6 +8,9 @@ var mongoose = require('mongoose'); // mongoose for mongodb
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var conferences = require('./routes/conferences');
+var book = require('./routes/book');
+var listing = require('./routes/listing');
 
 var app = express(); // create our app w/ express
 
@@ -18,7 +21,7 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 
-mongoose.connect('mongodb://localhost'); 
+//mongoose.connect('mongodb://localhost/test'); 
 
 //Configuration:
 //using express modules to add more functionality to our application.
@@ -32,6 +35,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //routing information through express
 app.use('/', routes);
 app.use('/users', users);
+app.use('/conferences', conferences);
+app.use('/book', book);
+app.use('/listing', listing);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
