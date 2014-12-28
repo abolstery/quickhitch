@@ -1,3 +1,12 @@
+Notes for Kavita and Amanda:
+
+-I did not get a chance to finish the matching services stuff
+-I did, however, figure out that there might be a problem with the app + angular. The way the routes are working right now might cause the entire angular section to reload each time you load a page. If that is the case, then the data won't stay locally. If you can configure the database to save stuff, that would be magnificent because then you can do a $http.get() to retrieve data instead of initializing it each time.
+	- Idea to fix: change the routing to do angular routing so that the pages won't keep loading everything each time
+
+Questions? Email me: abolikumthekar@gmail.com with subject line: "QUICKHITCH".
+
+
 Welcome to Quickhitch! 
 This application is created with NodeJS, AngularJS, and MongoDB.
 

@@ -22,10 +22,11 @@ quickhitch.controller('rideController', function ($scope, Data) {
 		code: Data.code,
 		date: "",
 		arrTime:"",
-		ampm:AM,
+		ampm:"AM",
 		flightNum: ""
 	};
 	$scope.valid = false;
+	$scope.matches = [];
 
 	//can add a validator for information here using:
 	/*
@@ -36,6 +37,7 @@ quickhitch.controller('rideController', function ($scope, Data) {
 	*/
 
 	$scope.findRide = function() {
+
 		var currDate = $scope.ride.date.split("/");
 		currDate = new Date(parseInt(currDate[2]), parseInt(currDate[0]), parseInt(currDate[1]));
 
