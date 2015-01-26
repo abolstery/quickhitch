@@ -2,7 +2,7 @@ extends layout
 
 block content
 	div(ng-controller="rideController", class="container")
-		table
+		table(class="center2", ng-hide="valid")
 			tr
 				td Name
 				td
@@ -14,7 +14,7 @@ block content
 			tr
 				td Date
 				td
-					input(id="datepicker", type="text", ng-model="ride.date")
+					input(id="datepicker", type="text", ng-model="ride.date", datepicker)
 			tr
 				td Flight Number
 				td
@@ -22,11 +22,35 @@ block content
 			tr
 				td Arrival Time
 				td
-					input(placeholder="10:00", ng-model="ride.flightNum", style="width:40%")
-					select(ng-model="ampm")
-						option AM
-						option PM
-		br/
-		a(ng-click="findRide()", href="/listing", class="button buttonWord") Submit
+					input(placeholder="10:00", ng-model="ride.arrTime", style="width:40%")
+					select(ng-model="ride.ampm", ng-options="opt for opt in options")
+			tr
+				td Phone Number
+				td
+					input(placeholder="123-456-7890", ng-model="ride.phone")
 
-- $( "#datepicker" ).datepicker();
+		br/
+		div(ng-show="valid && !noMatch")
+			h2(class="center") Matches for {{ride.name}} on {{ride.date}}
+			table(class="center2")
+				thead
+					tr 
+						th Name
+						th Arrival Time
+						th Flight Number
+						th Contact Info
+				tbody
+					tr(ng-repeat="match in matches")
+						td {{match.name}}
+						td {{match.arrTime}} {{match.milTime > 1200 ? "PM" : "AM"}}
+						td {{match.flightNum}}
+						td {{match.phone}}
+
+		div(ng-show="noMatch") 
+			h2(class="center") No Matches Found
+			p(class="center") Maybe try a different date or flight time?
+
+		a(ng-click="findRide()", ng-hide="valid",class="button buttonWord centerButt") Submit
+		a(ng-show="valid", ng-click="reset()", class="button buttonWord") Try Again?
+
+= $( '#datepicker' ).datepicker()

@@ -16,7 +16,8 @@
     "jade": "~1.6.0",
     "stylus": "0.42.3",
     "mongodb": ">= 0.9.6-7",
-    "mongoose": "~3.8.2"
+    "mongoose": "~3.8.2",
+    "underscore":"~1.7.0"
   },
   "description": "This is the QuickHitch application created with NodeJS, AngularJS, and MongoDB.",
   "main": "app.js",

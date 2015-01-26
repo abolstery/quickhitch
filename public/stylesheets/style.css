@@ -29,6 +29,15 @@ a {
 	margin-right: auto;
 	margin-left: auto;
 }
+.center2 {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.centerButt {
+  margin-left:45%;
+  margin-right: 45%;
+}
 
 #mainDiv {
   font-family: 'Helvetica Neue';

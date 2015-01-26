@@ -10,7 +10,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var conferences = require('./routes/conferences');
 var book = require('./routes/book');
-var listing = require('./routes/listing');
 
 var app = express(); // create our app w/ express
 
@@ -32,13 +31,15 @@ app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//routing information through express
+//routing information. send every request layout.jade
+// app.all('/*', function(req, res, next) {
+//         res.render('layout', {  });
+//     });
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/conferences', conferences);
 app.use('/book', book);
-app.use('/listing', listing);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -70,5 +71,7 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+
 
 module.exports = app;
