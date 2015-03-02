@@ -1,10 +1,11 @@
+
 var quickhitch = angular.module('quickhitch', []);
 
 quickhitch.controller('mainCtrl', function ($scope) {
 
 });
 
-quickhitch.controller('confController', function ($scope, Data) {
+quickhitch.controller('confController', function ($scope, Data) { //Conferences.jade
 	$scope.conferences = Data.conferences;
 	$scope.setRide = function(conferenceCode) {
 		Data.setCode(conferenceCode);
@@ -29,6 +30,7 @@ quickhitch.controller('rideController', function ($scope, Data) {
 		flightNum: "",
 		phone:""
 	};
+
 	$scope.valid = false;
 	$scope.noMatch = false;
 	$scope.matches = [];
@@ -79,7 +81,7 @@ quickhitch.controller('rideController', function ($scope, Data) {
 });
 
 quickhitch.factory('Data', ['$http', function($http) {
-    var dataFactory = {};
+    var dataFactory = {};  //made NEW factory object that I can add to the controller
 	dataFactory.options = [ "AM" , "PM" ];
 	dataFactory.conferences = [
 		{name:"Grace Hopper", code:"GHC"}, 

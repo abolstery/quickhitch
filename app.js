@@ -1,10 +1,10 @@
+
 var express = require('express'); 
 var path = require('path');
 var favicon = require('serve-favicon'); //icon
 var logger = require('morgan'); // log requests to the console (express4)
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
-var mongoose = require('mongoose'); // mongoose for mongodb
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
