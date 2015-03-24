@@ -1,21 +1,21 @@
-
-
-
+require('./database.js');
 var express = require('express'); 
 var path = require('path');
 var favicon = require('serve-favicon'); //icon
 var logger = require('morgan'); // log requests to the console (express4)
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
-var deleteMethod = require('method-override'); //simulate DELETE and PUT
-
 //SET THE ROUTES!
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/nodetest1');
+var mongoose = require('mongoose'); // mongoose is a Node.js library 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var conferences = require('./routes/conferences');
 var book = require('./routes/book');
 var app = express(); // create our app w/ express
-var mongoose = require('mongoose'); // mongoose is a Node.js library 
+var http = require('http');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,6 +39,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //         res.render('layout', {  });
 //     });
 
+//make db accessible to router
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/conferences', conferences);
@@ -51,9 +57,6 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-// error handlers
-// development error handler
-// will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
@@ -64,17 +67,9 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+http.createServer(app).listen(app.get('port'), function(){
+
 });
 
-app.listen(3000);
-app.log("App listening on port 3000");
 module.exports = app;
 
