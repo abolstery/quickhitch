@@ -1,0 +1,55 @@
+extends layout
+
+block content
+    div(ng-controller="rideController", class="container")
+        form#formAddUser(name="adduser", method="post", action="/adduser")
+            tr
+                td Name
+                td 
+                    input(type="text", placeholder="Nancy Drew", ng-model="ride.name", name="username") 
+            tr 
+                td Conference Code
+                td 
+                    input(type="text", placeholder="GHC",ng-model="ride.code", name="conference")
+            tr
+                td Date
+                td 
+                    input(type="text", placeholder="datepicker", name=date, ng-model="ride.date", datepicker)
+            tr
+                td Flight Number
+                td 
+                    input(placeholder="UA432", name="flightNumber", ng-model="ride.flightNum")
+            tr
+                td Arrival Time
+                td 
+                    input(placeholder="10:00", name="arrival", ng-model="ride.arrTime", style="width:40%")
+                    select(ng-model="ride.ampm", ng-options="opt for opt in options")
+            tr
+                td Phone Number
+                td 
+                    input(placeholder="123-456-7890", name="number", ng-model="ride.phone") 
+            
+           button#btnSubmit(type="submit") submit
+
+        br/
+        div(ng-show="valid && !noMatch")
+            h2(class="center") Matches for {{ride.name}} on {{ride.date}}
+            table(class="center2")
+                thead
+                    tr
+                        th Name
+                        th Arrival Time
+                        th Flight Number
+                        th Contact Info
+                tbody
+                    tr(ng-repeat="match in matches")
+                        td {{match.name}}
+                        td {{match.arrTime}} {{match.milTime > 1200 ? "PM" : "AM"}}
+                        td {{match.flightNum}}
+                        td {{match.phone}}
+        div(ng-show="noMatch")
+            h2(class="center") No Matches Found
+            p(class="center") Maybe try a different date or flight time?
+    
+        a(ng-click="findRide()", ng-hide="valid",class="button buttonWord centerButt") Submit
+        a(ng-show="valid", ng-click="reset()", class="button buttonWord centerButt") Try Again?

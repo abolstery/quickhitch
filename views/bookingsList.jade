@@ -1,0 +1,31 @@
+extends layout
+
+block content
+	h1 Matches
+	div(ng-controller="rideController", class="container")
+		h2(class="center") Matches for {{ride.name}} on {{ride.date}}
+		table(class="center2")
+			thead
+				tr 
+					th Name
+					th Arrival Time
+					th Flight Number
+					th Contact Info
+			tbody
+				tr(ng-repeat="match in matches")
+					td {{match.name}}
+					td {{match.arrTime}} {{match.milTime > 1200 ? "PM" :"AM"}}
+					td {{match.flightNum}}
+					td {{match.phone}}
+
+	div(ng-show="noMatch") 
+		h2(class="center") No Matches Found			
+		p(class="center") Maybe try a different date or flight time?
+
+	submit(ng-show="valid", ng-click="reset()", class="button buttonWord centerButt") Try Again?
+            
+
+
+
+
+

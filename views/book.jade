@@ -10,7 +10,7 @@ block content
             tr 
                 td Conference Code
                 td 
-                    input(type="text", placeholder="GHC",ng-model="ride.code", name="conference")
+                    input(type="text", placeholder="GHC", ng-model="ride.code", name="conference")
             tr
                 td Date
                 td 
@@ -23,10 +23,33 @@ block content
                 td Arrival Time
                 td 
                     input(placeholder="10:00", name="arrival", ng-model="ride.arrTime", style="width:40%")
-                    select(ng-model="ride.ampm", ng-options="opt for opt in options")
+                    select(ng-model="ride.ampm", name="ampm", ng-options="opt for opt in options")
             tr
                 td Phone Number
                 td 
                     input(placeholder="123-456-7890", name="number", ng-model="ride.phone") 
-            
-                button#btnSubmit(type="submit", ng-click="findRide()", class="button buttonWord centerButt") submit
+
+            button(ng-click="findRide()", ng-hide="valid",class="button buttonWord centerButt") Submit
+
+        
+        br/
+        div(ng-show="valid && !noMatch")
+            h2(class="center") Matches for {{ride.name}} on {{ride.date}}
+            table(class="center2")
+                thead
+                    tr 
+                        th Name
+                        th Arrival Time
+                        th Flight Number
+                        th Contact Info
+                tbody
+                    tr(ng-repeat="match in matches")
+                        td {{match.name}}
+                        td {{match.arrTime}} {{match.milTime > 1200 ? "PM" : "AM"}}
+                        td {{match.flightNum}}
+                        td {{match.phone}}
+
+        div(ng-show="noMatch") 
+            h2(class="center") No Matches Found
+            p(class="center") Maybe try a different date or flight time?
+            a(ng-show="valid", ng-click="reset()", class="button buttonWord centerButt") Try Again?

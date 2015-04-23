@@ -5,7 +5,7 @@ var logger = require('morgan'); // log requests to the console (express4)
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
 
-
+var http = require('http');
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/quickhitch');
